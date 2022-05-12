@@ -29,6 +29,11 @@ Here is an assignment to help you review your knowledge.
 | 1007       | Johnny Blue  | New Haven     | 2         |
 | 1008       | Johse Brook  | Miami         | 2         |
 
+SELECT sch.school_name, std.student_name, sch.city
+FROM school as sch JOIN student as std
+ON sch.school_id = std.school_id
+WHERE sch.city = std.city AND std.city != 'New York';
+
 > 2. Write an SQL statement that lists student names, subject names, subject lecturers, and the max amount of points for all subjects except Computer Science and any subjects with a max score between 100 and 200.
 
 **Table: school**
@@ -53,3 +58,8 @@ Here is an assignment to help you review your knowledge.
 | 2005       | Brad Cameron   | Stanford      | 11        |
 | 2006       | Sofia Roles    | Boston        | 16        |
 | 2007       | Rory Pietila   | New Haven     | 12        |
+
+SELECT std.student_name, sch.subject_name, sch.lecturer, sch.max_score
+FROM school as sch JOIN student as std
+ON sch.subject_id = std.school_id
+WHERE sch.subject_name != 'Computer Science' AND sch.max_score > 100 AND sch.max_score < 200;
